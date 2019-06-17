@@ -32,8 +32,3 @@ Things you can do with the script:
 
 2. **Broadcast** a message by specifying the user name by comma separated values. <br>
    Eg: `Ankur, Bhanu, Riyaz, Mayank`
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-# WhatsappPy
