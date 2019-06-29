@@ -3,12 +3,17 @@ from selenium.webdriver.common.keys import Keys
 import time
 import os
 import threading
+import sys
 driver = None
 
 
 def main():
     global driver
-    driver = webdriver.Chrome(os.environ['CHROME_DRIVER'])
+    try:
+        driver = webdriver.Chrome(os.environ['CHROME_DRIVER'])
+    except KeyError:
+        print('Cannot find path to Chrome Driver\n Exiting')
+        sys.exit(1)
     driver.get("https://web.whatsapp.com/")
     answer = input('Is the phone connected successfully? (y/Y) -> ')
 
@@ -26,8 +31,12 @@ def main():
 
 
 def give_options():
-    answer = int(
-        input('1. Send scheduled message\n2. Send quick message\n3. Chat\n-> ').strip())
+    try:
+        answer = int(
+            input('1. Send scheduled message\n2. Send quick message\n3. Chat\n-> ').strip())
+    except ValueError:
+        print('Invalid Input\nExiting')
+        sys.exit(1)
 
     if answer == 1:
         interval = int(input('Enter the interval in seconds -> ').strip())
